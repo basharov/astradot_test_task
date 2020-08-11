@@ -9,6 +9,7 @@
 ## Base Component
 To implement 5 components I built a Base Component `src/components/BaseComponent`.
 It's a functional component and includes hooks to load data from the mock API service and update local state.
+
 On first start a request to API is sent immediately and Loading component is shown.
 Then, regular requests are being sent via `setTimeout` and recursion. 
 
