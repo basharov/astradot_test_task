@@ -6,7 +6,7 @@
   "scripts": {
     "precommit": "yarn lint && yarn test",
     "watch": "webpack -w --progress --colors",
-    "wds": "NODE_ENV=production webpack-dev-server ",
+    "wds": "webpack-dev-server ",
     "build": "webpack",
     "prod": "webpack -p --config-name webpack.config.prod.js",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx"
