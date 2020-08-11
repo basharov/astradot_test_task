@@ -1,6 +1,7 @@
 # Astradot test task
 
 ## How to start
+- Install deps by running `yarn`.
 - To build and run in watch mode, run `yarn wds` which will use Webpack Development Server and launch it on port 9000.
 - Main entry point is `src/App.tsx`.
 
