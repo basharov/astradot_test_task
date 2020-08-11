@@ -10,6 +10,12 @@ export const BaseComponent = (props: IProps) => {
 
     const [data, setData] = useState('N/A');
     const [isFirstStart, setFirstStart] = useState(true);
+    let timeout: NodeJS.Timeout;
+
+    const cleanupTimeout = () => {
+        console.log('Will cleanup timeouts for the unmounted component');
+        clearTimeout(timeout);
+    };
 
     const loadData = async (): Promise<void> => {
         const query = genQuery(timeRange, props.componentName);
@@ -19,7 +25,7 @@ export const BaseComponent = (props: IProps) => {
 
     const startPollingData = async (): Promise<void> => {
         setFirstStart(false);
-        setTimeout(async () => {
+        timeout = setTimeout(async () => {
             await loadData();
             startPollingData();
         }, props.refreshIntervalInSeconds * 1000);
@@ -31,6 +37,7 @@ export const BaseComponent = (props: IProps) => {
 
     useEffect(() => {
         startPollingData();
+        return cleanupTimeout;
     }, []);
 
     return (
